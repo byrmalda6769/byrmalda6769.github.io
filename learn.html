@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Обучение — VITALII KARLSON</title><style>
+:root{--bg:#0b1220;--panel:#141e2e;--panel2:#1c293b;--cream:#edf1f7;--muted:#aab6c8;--gold:#e5b84b;--green:#8798b2;--line:#2b3a50}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--cream);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+header{position:sticky;top:0;z-index:5;background:#0b1220eF;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:800;letter-spacing:.04em;font-size:19px}.brand span{color:var(--gold)}.links{display:flex;gap:28px;color:var(--muted);font-size:14px}.links a:hover{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 19px;border-radius:9px;background:var(--gold);color:#101827;font-weight:750;border:0;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-2px);filter:brightness(1.06)}.btn.ghost{background:transparent;border:1px solid #66758c;color:var(--cream)}
+.hero{padding:82px 0 76px;background:radial-gradient(ellipse at 78% 45%,#26364e 0,transparent 42%),linear-gradient(120deg,#0b1220,#111c2d)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center}.eyebrow{color:var(--gold);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:800}.hero h1{font-size:clamp(42px,6vw,70px);line-height:1.04;letter-spacing:-.045em;margin:17px 0 20px}.hero h1 em{font-style:normal;color:var(--gold)}.lead{color:var(--muted);font-size:18px;max-width:520px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.stats{display:flex;gap:34px;margin-top:44px}.stat strong{display:block;font-size:25px;color:var(--cream)}.stat span{font-size:12px;color:var(--muted)}
+.board-wrap{padding:17px;background:#1a2638;border:1px solid #52627a;border-radius:18px;box-shadow:0 28px 70px #0008;transform:rotate(1deg)}.board{display:grid;grid-template-columns:repeat(8,1fr);aspect-ratio:1;border:5px solid #d4aa4b;border-radius:4px;overflow:hidden}.sq{display:grid;place-items:center;font-family:"Arial Unicode MS",serif;font-size:clamp(24px,4.2vw,48px);line-height:1}.sq:nth-child(16n+1),.sq:nth-child(16n+3),.sq:nth-child(16n+5),.sq:nth-child(16n+7),.sq:nth-child(16n+10),.sq:nth-child(16n+12),.sq:nth-child(16n+14),.sq:nth-child(16n+16){background:#dce3ee;color:#182235}.sq:nth-child(16n+2),.sq:nth-child(16n+4),.sq:nth-child(16n+6),.sq:nth-child(16n+8),.sq:nth-child(16n+9),.sq:nth-child(16n+11),.sq:nth-child(16n+13),.sq:nth-child(16n+15){background:#344966;color:#f4f6fa}.board-label{display:flex;justify-content:space-between;color:#c3cdbf;font-size:12px;padding:12px 3px 0}
+section{padding:76px 0}.section-head{max-width:650px;margin-bottom:34px}.section-head h2{font-size:clamp(30px,4vw,43px);line-height:1.1;margin:10px 0}.section-head p{color:var(--muted);margin:0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:25px}.card .icon{font-size:27px}.card h3{margin:14px 0 7px}.card p{color:var(--muted);font-size:14px;margin:0}.tag{display:inline-block;color:var(--gold);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:800}
+.openings{background:#111b2b;border-block:1px solid var(--line)}.opening-list{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.opening{padding:20px;background:var(--panel);border:1px solid var(--line);border-radius:12px}.opening strong{display:block;font-size:17px}.opening code{display:block;color:var(--gold);margin:8px 0;font-size:13px}.opening small{color:var(--muted)}
+.puzzle-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:35px;align-items:center}.puzzle-box{background:var(--panel);border:1px solid var(--line);padding:25px;border-radius:16px}.answers{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.answer{background:var(--panel2);border:1px solid #536451;color:var(--cream);padding:10px 15px;border-radius:8px;cursor:pointer}.answer:hover{border-color:var(--gold)}#feedback{color:var(--green);min-height:28px;margin-top:14px;font-weight:650}
+.cta{background:linear-gradient(110deg,#293d30,#1b2921);border:1px solid #52654e;border-radius:18px;padding:42px;display:flex;align-items:center;justify-content:space-between;gap:25px}.cta h2{font-size:32px;line-height:1.1;margin:8px 0}.cta p{color:var(--muted);margin:0}
+footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px}.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+@media(max-width:800px){.hero-grid,.puzzle-grid{grid-template-columns:1fr}.hero{padding-top:55px}.board-wrap{max-width:520px;margin:auto}.cards,.opening-list{grid-template-columns:1fr}.links{display:none}.cta{align-items:flex-start;flex-direction:column}.stats{gap:22px}}
+
+/* Chess vs computer */
+.game{display:grid;grid-template-columns:minmax(280px,650px) minmax(260px,1fr);gap:22px;align-items:start;padding:18px 0 70px}
+.board-card{max-width:650px;width:100%;margin:auto}
+.side-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px}
+.board{display:grid;grid-template-columns:repeat(8,1fr);aspect-ratio:1;border:5px solid #b79a70;border-radius:5px;overflow:hidden;user-select:none}
+.square{position:relative;display:grid;place-items:center;aspect-ratio:1;cursor:pointer;font-family:"Segoe UI Symbol","DejaVu Sans",serif;font-size:clamp(25px,5.4vw,59px);line-height:1}
+.light{background:#f0d9b5}
+.dark{background:#344966}
+.white-piece{color:#fffdf4;text-shadow:1px 1px 1px #222,-1px -1px 1px #333}
+.black-piece{color:#171717;text-shadow:0 1px #eee}
+.piece-img{width:88%;height:88%;object-fit:contain;pointer-events:none;z-index:1}
+.piece-img.white-piece-img{filter:brightness(0) invert(1) drop-shadow(0 0 1px #25251f) drop-shadow(0 2px 1px #0009)}
+.piece-img.black-piece-img{filter:brightness(0) drop-shadow(0 2px 1px #0009)}
+.square.selected{background:#e9cf52!important}
+.square.last{box-shadow:inset 0 0 0 5px #e5c65c99}
+.square.legal:after{content:"";position:absolute;width:25%;height:25%;border-radius:50%;background:#183c26a8}
+.square.capture:after{content:"";position:absolute;inset:4px;border:5px solid #183c2688;border-radius:50%}
+.coord{position:absolute;font:11px system-ui;opacity:.8;left:4px;top:2px;color:#242424}
+.coord.file{left:auto;top:auto;right:4px;bottom:1px}
+.status{font-weight:750;font-size:16px;margin:2px 0 12px}
+.substatus{font-size:13px;color:var(--muted);min-height:22px;margin-bottom:12px}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.settings{display:flex;align-items:center;gap:9px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:12px 0}
+.moves{max-height:280px;overflow:auto;border-top:1px solid var(--line);margin-top:14px;padding-top:10px;font-variant-numeric:tabular-nums}
+.move-row{display:grid;grid-template-columns:35px 1fr 1fr;gap:8px;padding:5px 7px;border-radius:6px;font-size:14px}
+.move-num{color:var(--muted)}
+.info h2{margin:3px 0 8px;font-size:22px}
+.info p,.info li{font-size:14px;color:var(--muted)}
+.info ul{padding-left:19px}
+.tip{border-left:3px solid var(--gold);padding:10px 13px;background:#ffffff08;border-radius:0 8px 8px 0;margin-top:16px;font-size:13px;color:var(--muted)}
+@media(max-width:850px){.game{grid-template-columns:1fr}.board-card,.side-card{max-width:650px;width:100%;margin:auto}}
+
+.online-panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;margin:0 0 18px}
+.online-panel h3{margin:0 0 6px}.online-panel p{color:var(--muted);font-size:13px;margin:0 0 12px}
+.online-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.online-row input{min-width:130px;flex:1;background:#0b1220;border:1px solid #52644f;color:var(--cream);border-radius:8px;padding:10px;font:inherit}
+#onlineState{font-size:13px;color:var(--green);margin-top:10px;min-height:20px}
+
+
+.links{gap:18px;flex-wrap:wrap}.links a.active{color:var(--gold)}
+.page-title{padding:55px 0 20px}.page-title h1{font-size:clamp(34px,5vw,52px);margin:8px 0}.page-title p{color:var(--muted);max-width:680px}
+.simple-page{min-height:65vh}
+@media(max-width:900px){.links{display:none}}
+
+/* VITALII KARLSON — Tournament Edition */
+:root{
+ --bg:#080d16;--panel:#111b2b;--panel2:#17253a;
+ --cream:#edf3fb;--muted:#9aaac0;--gold:#f0b84b;
+ --green:#56b8e8;--line:#2a3b55;
+}
+body{
+ background:
+  radial-gradient(ellipse at 50% -15%,rgba(45,101,160,.24),transparent 55%),
+  linear-gradient(rgba(8,13,22,.96),rgba(8,13,22,.98)),
+  repeating-linear-gradient(0deg,transparent 0 39px,rgba(117,160,210,.035) 40px),
+  var(--bg);
+ color:var(--cream);
+}
+header,nav,.nav,.navbar{
+ background:rgba(8,14,25,.94)!important;
+ border-bottom:1px solid rgba(91,145,205,.28)!important;
+ backdrop-filter:blur(12px);
+}
+h1,h2,h3{letter-spacing:.015em}
+h1{ text-shadow:0 8px 35px rgba(53,139,218,.22); }
+a{transition:color .2s ease, border-color .2s ease, transform .2s ease}
+a:hover{color:#ffd27a}
+button,.btn,.button{
+ border-radius:7px!important;
+ text-transform:uppercase;
+ letter-spacing:.055em;
+ font-weight:750!important;
+}
+button:hover,.btn:hover,.button:hover{
+ transform:translateY(-2px);
+ box-shadow:0 10px 28px rgba(0,0,0,.28);
+}
+.card,.panel,.box,.feature,.stat,.content-card{
+ background:linear-gradient(145deg,rgba(23,37,58,.96),rgba(13,23,38,.98))!important;
+ border:1px solid rgba(104,151,202,.24)!important;
+ border-radius:12px!important;
+ box-shadow:0 14px 38px rgba(0,0,0,.22);
+}
+input,select,textarea{
+ background:#0b1422!important;color:var(--cream)!important;
+ border:1px solid #344a68!important;border-radius:7px!important;
+}
+hr{border-color:var(--line)}
+/* tournament-style labels and dividers */
+section{position:relative}
+section h2:after{
+ content:"";display:block;width:58px;height:3px;margin-top:12px;
+ background:linear-gradient(90deg,var(--gold),var(--green));
+ border-radius:3px;
+}
+::selection{background:#2f78b8;color:white}
+@media(max-width:700px){
+ body{background-color:var(--bg)}
+ button,.btn,.button{letter-spacing:.025em}
+}
+
+</style></head><body>
+<header><div class="wrap nav">
+<a class="brand" href="/index.html">♞ <span>VITALII</span> KARLSON</a>
+<nav class="links">
+<a href="/index.html">Главная</a><a href="/play.html">Играть</a><a class="active" href="/learn.html">Обучение</a>
+<a href="/openings.html">Дебюты</a><a href="/puzzle.html">Задача дня</a><a href="/rating.html">Рейтинг</a>
+</nav><a class="btn" href="/play.html">Играть</a></div></header><main><div class="wrap page-title"><span class="tag">Тренируйся каждый день</span><h1>Обучение</h1><p>Основы, тактика и стратегия для уверенной игры.</p></div><section id="learn"><div class="wrap"><div class="section-head"><span class="tag">Тренируйся каждый день</span><h2>Стань сильнее с каждым ходом</h2><p>Понятные материалы помогут уверенно перейти от первых правил к продуманной игре.</p></div><div class="cards">
+<article class="card"><div class="icon">♟</div><h3>Правила и основы</h3><p>Разберись, как ходят фигуры, что такое рокировка, пат, шах и мат.</p></article>
+<article class="card"><div class="icon">♞</div><h3>Тактика и комбинации</h3><p>Научись замечать вилки, связки, двойные удары и красивые жертвы.</p></article>
+<article class="card"><div class="icon">♚</div><h3>Стратегия эндшпиля</h3><p>Пойми активность короля, проходные пешки и принципы реализации перевеса.</p></article>
+</div></div></section></main><footer><div class="wrap foot"><span>♞ ХОД МЫСЛИ · Учись. Думай. Побеждай.</span><span>Учебный шахматный проект</span></div></footer></body></html>
